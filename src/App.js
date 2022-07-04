@@ -1,8 +1,11 @@
 import RegularList from './RegularList'
 import SmallPersonListItem from './people/SmallPersonListItem'
 import LargePersonListItem from './people/LargePersonListItem'
-
-
+import LargeProductListItem from './products/LargeProductListItem'
+import NumberListItem from './NumberListItem'
+import SmallProductListItem from './products/SmallProductListItem'
+import Modal from './Modal'
+import './App.css'
 
 const people = [{
   name: 'John Doe', 
@@ -39,21 +42,55 @@ const products = [{
   rating: 4.2,
 }]
 
-function App() {
+
+export default function App() {
   return (
-    <>
+    <div className='App'>
       <RegularList 
         items={people}
-        resourceName="person"
-        itemComponent={SmallPersonListItem}
-      />
-      <RegularList 
-        items={people}
-        resourceName="person"
+        resourceItem='person'
         itemComponent={LargePersonListItem}
       />
-    </>
-  );
+      <RegularList 
+        items={people}
+        resourceItem='person'
+        itemComponent={SmallPersonListItem}
+      />
+      <RegularList
+        items={products}
+        resourceItem="products"
+        itemComponent={LargeProductListItem}
+      />
+      <NumberListItem 
+        items={products}
+        resourceItem="products"
+        itemComponent={SmallProductListItem}
+      />
+      <Modal>
+        <LargeProductListItem products={products[0]}/>
+      </Modal>
+    </div>
+  )
 }
 
-export default App;
+
+
+
+// function App() {
+//   return (
+//     <>
+//       <RegularList 
+//         items={people}
+//         resourceName="person"
+//         itemComponent={SmallPersonListItem}
+//       />
+//       <RegularList 
+//         items={people}
+//         resourceName="person"
+//         itemComponent={LargePersonListItem}
+//       />
+//     </>
+//   );
+// }
+
+// export default App;
